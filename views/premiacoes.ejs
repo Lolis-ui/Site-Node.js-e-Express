@@ -1,0 +1,49 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+<div class="premiacoes-container">
+    <h1 class="titulo-pagina">🏆 Premiações</h1>
+    <p class="subtitulo-pagina">Os jogos indie mais premiados da história</p>
+    
+    <div class="premiacoes-lista">
+        <h2 class="section-titulo">📋 Todas as Premiações</h2>
+        
+        <% if (jogos && jogos.length > 0) { %>
+            <% jogos.forEach(jogo => { %>
+                <% const premiosDoJogo = premiacoes.filter(p => p.id_jogo === jogo.id); %>
+                <% if (premiosDoJogo.length > 0) { %>
+                    <div class="jogo-premiacoes">
+                        <div class="jogo-header">
+                            <% if (jogo.icone) { %>
+                                <div class="imagem-icone">
+                                    <img src="<%= jogo.icone %>" alt="<%= jogo.nome %>" class="jogo-icone">
+                                </div>
+                            <% } else { %>
+                                <div class="imagem-icone">🎮</div>
+                            <% } %>
+                            <h3 class="jogo-nome"><%= jogo.nome %></h3>
+                            <span class="total-premios"><%= premiosDoJogo.length %> prêmio<%= premiosDoJogo.length > 1 ? 's' : '' %></span>
+                        </div>
+                        
+                        <div class="premios-grid">
+                            <% premiosDoJogo.forEach(premio => { %>
+                                <div class="premio-card">
+                                    <div class="premio-icone"><%= premio.icone %></div>
+                                    <div class="premio-info">
+                                        <h4 class="premio-nome"><%= premio.premio %></h4>
+                                        <p class="premio-evento"><%= premio.evento %></p>
+                                        <span class="premio-ano"><%= premio.ano %></span>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                <% } %>
+            <% }) %>
+        <% } else { %>
+            <p class="text-center">Nenhum jogo encontrado.</p>
+        <% } %>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs') %>

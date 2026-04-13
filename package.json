@@ -1,0 +1,30 @@
+{
+  "name": "site-node.js-e-express",
+  "version": "1.0.0",
+  "description": "Esse projeto visa a criação de um site web completo usando Node.js e Express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lolis-ui/Site-Node.js-e-Express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Lolis-ui/Site-Node.js-e-Express/issues"
+  },
+  "homepage": "https://github.com/Lolis-ui/Site-Node.js-e-Express#readme",
+  "dependencies": {
+    "ejs": "^5.0.1",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

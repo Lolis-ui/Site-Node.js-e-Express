@@ -1,0 +1,33 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+<div class="personagens-container">
+    <h1 class="titulo-pagina">Personagens</h1>
+    
+    <% if (jogos && jogos.length > 0) { %>
+        <% jogos.forEach(jogo => { %>
+            <% const personagensDoJogo = personagensIndie.filter(p => p.id_jogo === jogo.id); %>
+            
+            <% if (personagensDoJogo.length > 0) { %>
+                <div class="jogo-section">
+                    <h1 class="titulo">
+                        <%= jogo.nome %>
+                        <a href="/info_jogo/<%= jogo.id %>" class="link-jogo">Ver jogo →</a>
+                    </h1>
+
+                    <div class="personagens-grid">
+                        <% personagensDoJogo.forEach(personagem => { %>
+                            <div class="personagem-card">
+                                <img src="<%= personagem.imagem_perfil%>" alt="<%= personagem.nome %>">
+                                <h2 class="sub-titulo"><%= personagem.nome %></h2>
+                                <a href="/personagem/<%= personagem.id %>" class="btn-ver-personagem">Ver Detalhes</a>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            <% } %>
+        <% }) %>
+    <% } %>
+</div>
+
+<%- include('partials/footer.ejs') %>

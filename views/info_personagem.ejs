@@ -1,0 +1,45 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+<div class="info_personagem">
+    <div class="card">
+        <div class="card-body">
+            <div class="imagem-principal">
+                <img src="<%= personagem.imagem_personagem %>" alt="<%= personagem.nome %>">
+            </div>
+            <h2 class="titulo"><%= personagem.nome %></h2>
+            <p class="sub-titulo">Jogo:</p>
+            <p class="jogo"><%= personagem.jogo %></p>
+            
+            <p class="sub-titulo">História:</p>
+            <p class="historia"><%= personagem.historia %></p>
+            
+            <p class="sub-titulo">Personalidade:</p>
+            <p class="personalidade"><%= personagem.personalidade %></p>
+            
+            <p class="sub-titulo">Poderes/Habilidades:</p>
+            <ul class="poderes">
+                <% if (personagem.poderes && personagem.poderes.length > 0) { %>
+                    <% personagem.poderes.forEach(poder => { %>
+                        <li><%= poder %></li>
+                    <% }) %>
+                <% } else { %>
+                    <li>Nenhum poder listado</li>
+                <% } %>
+            </ul>
+            
+            <p class="sub-titulo">Gameplay:</p>
+            <p class="gameplay"><%= personagem.gameplay %></p>
+            
+            <% 
+                // Encontra o jogo relacionado para criar o link de voltar
+                const jogoRelacionado = jogos.find(j => j.nome === personagem.jogo);
+                if (jogoRelacionado) { 
+            %>
+                <a href="/info_jogo/<%= jogoRelacionado.id %>" class="btn-voltar">Voltar ao Jogo</a>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs') %>

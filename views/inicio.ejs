@@ -1,0 +1,26 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+<main class="Inicio">
+    <h1>JOGOS INDIES, O MELHORA LUGAR PARA QUEM AMA JOGOS ÚNICOS!!!</h1>
+
+    <div class="catalogo_jogos">
+        <% jogos.forEach(jogo => { %>
+            <div class="jogos">
+                <a href="/info_jogo/<%= jogo.id %>">
+                    <div class="img">
+                        <img src="<%= jogo.imagem %>" alt="<%= jogo.nome %>">
+                    </div>
+                    <div class="informacao">
+                        <p class="nome"><strong><%= jogo.nome %></strong></p>
+                        <p class="descricao"><%= jogo.descricao_curta %></p>
+                        <p class="desenvolvedora"><%= jogo.desenvolvedora %></p>
+                        <p class="ano_lancamento"><%= jogo.ano %></p>
+                    </div>
+                </a>
+            </div>
+        <% }) %>
+    </div>
+</main>
+
+<%- include('partials/footer.ejs') %>

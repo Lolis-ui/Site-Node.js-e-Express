@@ -1,0 +1,60 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+<div class="info_jogos">
+    <div class="card">
+        <div class="card-body">
+            <div class="imagem-principal">
+                <img src="<%= jogo.imagem_principal %>" alt="<%= jogo.nome %>">
+            </div>
+            <h2 class="titulo"><%= jogo.nome %></h2>
+            
+            <!-- Desenvolvedor - APENAS TEXTO -->
+            <p class="sub-titulo">Desenvolvedor:</p>
+            <p class="desenvolvedor"><%= jogo.desenvolvedora %></p>
+            
+            <p class="sub-titulo">Ano de Lançamento:</p>
+            <p class="ano"><%= jogo.ano %></p>
+            
+            <p class="sub-titulo">Descrição do Jogo:</p>
+            <p class="descricao_jogo"><%= jogo.descricao_completa %></p>
+            
+            <div class="avaliacao-container">
+                <div class="avaliacao">
+                    <% for(let i = 0; i < jogo.estrelas; i++) { %>★<% } %>
+                    <% for(let i = jogo.estrelas; i < 5; i++) { %>☆<% } %>
+                </div>
+                <p class="nota"><%= jogo.nota %></p>
+            </div>
+            
+            <p class="sub-titulo">História do jogo:</p>
+            <p class="historia"><%= jogo.historia %></p>
+            
+            <p class="sub-titulo">Personagens:</p>
+            <div class="personagens">
+                <% if (personagens && personagens.length > 0) { %>
+                    <% personagens.forEach(personagem => { %>
+                        <a href="/personagem/<%= personagem.id %>" class="personagem-link">
+                            <img src="<%= personagem.imagem_perfil %>" alt="<%= personagem.nome %>">
+                            <p><%= personagem.nome %></p>
+                        </a>
+                    <% }) %>
+                <% } else { %>
+                    <p>Nenhum personagem listado</p>
+                <% } %>
+            </div>
+            
+            <p class="sub-titulo">Gameplay:</p>
+            <p class="gameplay"><%= jogo.gameplay_descricao %></p>
+            
+            <p class="sub-titulo">Plataformas:</p>
+            <p class="plataformas"><%= jogo.plataforma_compra %></p>
+            
+            <p class="sub-titulo">Se apaixonou? Compre o <%= jogo.nome %> agora:</p>
+            <p class="preco">R$ <%= jogo.preco.toFixed(2) %></p>
+            <a href="<%= jogo.link_compra %>" target="_blank" class="btn-comprar">Comprar Agora</a>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs') %>
